@@ -157,7 +157,6 @@
             }
           },
           "block_order": [
-            "collection-card-image",
             "collection-title"
           ]
         }
