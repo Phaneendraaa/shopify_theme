@@ -1,8 +1,17 @@
 
 
 {% if closest.collection == blank %}
-  {% assign text = 'placeholders.collection_title' | t %}
-  {% assign collection_title = '<p>' | append: text | append: '</p>' %}
+  {% liquid
+    assign title_text = 'placeholders.collection_title' | t
+    if forloop.index == 1
+      assign title_text = 'Indian Wear'
+    elsif forloop.index == 2
+      assign title_text = 'Western Wear'
+    elsif forloop.index == 3
+      assign title_text = 'Accessories'
+    endif
+    assign collection_title = '<p>' | append: title_text | append: '</p>'
+  %}
   {% render 'text', fallback_text: collection_title, block: block %}
 {% elsif closest.collection != blank %}
   {% assign collection_title = '<p>' | append: closest.collection.title | append: '</p>' %}
